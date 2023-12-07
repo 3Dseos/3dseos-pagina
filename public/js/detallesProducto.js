@@ -78,14 +78,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     function cargarCarrusel(producto) {
         const carouselInner = document.querySelector("#productCarousel .carousel-inner");
         const carouselHTML = producto.imagenes.map((imagen, index) => `
-             <div class="carousel-item${index === 0 ? ' active' : ''}">
+             <div class="carousel-item${index === 0 ? ' active' : ''}" id="miCarousel">
                  <img class="d-block w-100" src="${imagen}" alt="Imagen ${index + 1}">
              </div>
          `).join('');
 
         const miniaturasInner = document.getElementById('img-miniaturas');
         const miniaturasHTML = producto.imagenes.map((imagen, index) => `
-            <div class="col-3">
+            <div class="col-3" >
             <img src="${imagen}" class="d-block w-100 thumbnail" alt="Miniatura 1"
                 data-slide-to="${index}">
             </div>`).join('');
@@ -95,20 +95,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     function cargarDetalles(producto) {
-        const productContainer = document.getElementById("leer");
+        const productContainer = document.getElementById("product-details");
         const productHTML =
-            `<div class="product">
-                <h2 class="mb-3 text-primary">${producto.nombre}</h2>
-                <p class="lead text-muted mb-4">${producto.descripcion}</p>
+            `<div class="contenedor-principal">
+                <h2 class="mb-3 text-info">${producto.nombre}</h2>
+                <p class="lead text-white">${producto.descripcion}</p>
                 <h5 class="mb-2 text-info">Características:</h5>
-                <ul class="text-muted">
+                <ul class="text-white">
                 ${producto.caracteristicas.map(caracteristica => `<li class="list-prod">${caracteristica}</li>`).join('')}
                 </ul>
-                <button type="button" class="button">
-                <span class="button__text">Download</span>
-                <span class="button__icon"><svg class="svg" data-name="Layer 2" id="bdd05811-e15d-428c-bb53-8661459f9307" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
-              </button>
-                <i class='bx bxs-download icon'></i>
+                <button class="btn-Publicar mx-auto">
+                <span>Download<span>
                 </button>
             </div>`;
 
@@ -136,7 +133,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                                     ${comentario.usuario}
                                     <span class="text-warning mr-1">${estrellasHTML}</span>
                                 </div>
-                                <small class="text-muted">${comentario.fecha}</small>
+                                <small class="">${comentario.fecha}</small>
                             </h5>
                             <p>${comentario.comentario}</p>
                         </div>

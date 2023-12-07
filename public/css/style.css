@@ -2,7 +2,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
 
 /* ----------------------------------- */
+.contenedor {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+  gap: 2rem;
+}
 
+.carrousel {
+  background-color: aqua;
+  /* margin-top: 4rem; */
+  margin: 1rem;
+  display: flex;
+}
+
+.swiper {
+  max-width: 900px;
+  max-height: 400px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* flex: 1; */
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Estilo para el contenido a la izquierda */
+.contenido {
+  /* flex: 2; El contenido ocupará el espacio restante */
+  background-color: #ff2929; /* Cambia esto al color que desees */
+  padding: 20px;
+  margin: 2rem;
+  margin-right: 6rem;
+  border-radius: 30px;
+}
 * {
     font-family: 'Nunito', sans-serif;
     box-sizing: border-box;
@@ -152,9 +190,9 @@ p {
   }
   /* Carrousel */
 .container {
-  background-color: #000000c9;
+  background-color: #00000088;
     padding: 10px;
-    backdrop-filter: blur(50px);
+    /* backdrop-filter: blur(50px); */
     border-radius: 30px;
     margin: 50px auto;
     padding: 20px;
@@ -175,8 +213,8 @@ p {
 .containerCard{
   width: 100%;
   max-width: 1100px;
-  background-color: #000000c9;
-  backdrop-filter: blur(50px);
+  background-color: #00000088;
+  /* backdrop-filter: blur(50px); */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
   gap: 40px;
@@ -191,8 +229,8 @@ p {
   margin-bottom: 0;
   justify-content: center;
   align-items: center;
-  background-color: #000000c9;
-  backdrop-filter: blur(50px);
+  background-color: #00000088;
+  /* backdrop-filter: blur(50px); */
   cursor: pointer;
   border-top-left-radius: 30px; /* Border-radius solo en la esquina superior izquierda */
   border-top-right-radius: 30px; /* Border-radius solo en la esquina superior derecha */
@@ -219,8 +257,8 @@ img{
   justify-content: center;
 }
 .cardBoton{
-  background-color: #000000c9;
-  backdrop-filter: blur(50px);
+  background-color: #00000088;
+  /* backdrop-filter: blur(50px); */
   width: 100%;
   max-width: 1100px;
   padding-bottom: 1rem;
@@ -267,8 +305,8 @@ img{
   transition: all 0.5s ease;
   text-overflow: ellipsis;
   white-space: nowrap;
-  backdrop-filter: blur(.1rem);
-  background-color: rgba(0, 0, 0, 0.2);
+  /* backdrop-filter: blur(.1rem); */
+  background-color: #00000088;
   border-radius: .5rem 2rem;
 }
 
@@ -474,7 +512,7 @@ p h2{
   text-align: center;
   gap: 40px;
   max-width: 1100px;
-  background-color: #000000c9;
+  background-color: #00000088;
   /* backdrop-filter: blur(50px); */
   padding: 30px;
   margin: 0 auto;
@@ -605,6 +643,9 @@ main h1 {
 .cell:nth-child(9) {
   --cell-color: #60EFFF;
 }
+
+/* Detalles Productos */
+
 
 /*Animation*/
 @keyframes ripple {

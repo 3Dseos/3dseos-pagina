@@ -4,7 +4,6 @@
         "nombre": "Prótesis de mano",
         "descripcion": "Prótesis de mano. Este prototipo forma parte del proyecto de control de prótesis robóticas mediante un sensor mioeléctrico, pero también se pueden utilizar otros sensores.",
         "imagenes": [
-            "img/imgProducto/img1.jpg",
             "img/imgProducto/img2.jpg",
             "img/imgProducto/img3.jpg",
             "img/imgProducto/img4.jpg"
@@ -67,7 +66,8 @@
         "id" : 3,
         "nombre": "Prótesis de mano",
         "descripcion": "Prótesis de mano Phoenix sin extremidades",
-        "imagenes": ["img/imgBiblioteca/img2.webp"],
+        "imagenes": ["img/imgBiblioteca/img2.webp",
+        "img/imgBiblioteca/img1.webp"],
         "caracteristicas": [
             "Densidad de relleno: 20%",
             "Temperatura de material: Según lo indique el PLA",
