@@ -199,13 +199,6 @@
               "fecha": "15/12/2023",
               "comentario": "Funciona sorprendentemente bien. Mi amigo la usa a diario. Impresa con PETG para mayor durabilidad."
             }
-        ],"caracteristicas": [
-            "Número de diseño: 1527928",
-            "Fecha de publicación: 2023-10-21 12:43",
-            "Férula de muñeca y antebrazo totalmente funcional y práctica para imprimir",
-            "Velocidad de impresión: de 30 a 100 mm/s.",
-            "Piezas: 2 partes",
-            "Recomendación: Imprimir con algún material flexible para darle articulación."
         ],
         "categoria": "prótesis",
         "archivo" : "" 
@@ -219,6 +212,14 @@
             "img/9protesisMunAnt/2-pro-muneca-antebrazo.png",
             "img/9protesisMunAnt/3-pro-muneca-antebrazo.png",
             "img/9protesisMunAnt/4-pro-muneca-antebrazo.png"
+        ],
+        "caracteristicas": [
+            "Número de diseño: 1527928",
+            "Fecha de publicación: 2023-10-21 12:43",
+            "Férula de muñeca y antebrazo totalmente funcional y práctica para imprimir",
+            "Velocidad de impresión: de 30 a 100 mm/s.",
+            "Piezas: 2 partes",
+            "Recomendación: Imprimir con algún material flexible para darle articulación."
         ],
         "comentarios": [
             {
@@ -538,9 +539,10 @@
         "nombre": "Yoshi",
         "descripcion": "Yoshi es un personaje de la larga y exitosa franquicia de Mario.",
         "imagenes": [
-            "img/16arteLuigi/1-arte-totoro.png",
-	        "img/16arteLuigi/2-arte-totoro.png",
-	        "img/16arteLuigi/3-arte-totoro.png"
+            "img/16arteYoshi/1-arte-yoshi.png",
+	        "img/16arteYoshi/2-arte-yoshi.png",
+	        "img/16arteYoshi/3-arte-yoshi.png",
+            "img/16arteYoshi/4-arte-yoshi.png"
         ],
         "caracteristicas": [
             "Número de diseño: 23553",
@@ -566,11 +568,10 @@
         "nombre": "Yoshi bebé",
         "descripcion": "Yoshi en tamaño bebé es un personaje de la larga y exitosa franquicia de Mario.",
         "imagenes": [
-            "img/21arteYoshi/1-arte-yoshi.png",
-	        "img/21arteYoshi/2-arte-yoshi.png",
-	        "img/21arteYoshi/3-arte-yoshi.png",
-            "img/21arteYoshi/4-arte-yoshi.png"
-            
+            "img/16arteYoshiBebe/1-arte-yoshi.png",
+            "img/16arteYoshiBebe/2-arte-yoshi.png",
+            "img/16arteYoshiBebe/3-arte-yoshi.png",
+            "img/16arteYoshiBebe/4-arte-yoshi.png"
         ],
         "caracteristicas": [
             "Número de diseño: 1268610",
@@ -630,9 +631,9 @@
         "descripcion": "Koopa Troopa Verde es un personaje de la larga y exitosa franquicia de Mario.",
         "imagenes": [
             "img/22arteKoopaVerde/1-arte-koopa.png",
-            "img/22arteKoopaVerde/1-arte-koopa.png",
-            "img/22arteKoopaVerde/1-arte-koopa.png",
-            "img/22arteKoopaVerde/1-arte-koopa.png"
+            "img/22arteKoopaVerde/2-arte-koopa.png",
+            "img/22arteKoopaVerde/3-arte-koopa.png",
+            "img/22arteKoopaVerde/4-arte-koopa.png"
         ],
         "caracteristicas": [
             "Número de diseño: 24283",
@@ -687,10 +688,10 @@
         "nombre": "Magikoopa",
         "descripcion": "Magikoopa es un personaje de la larga y exitosa franquicia de Mario.",
         "imagenes": [
-            "img/25arteMagikoopa/1-arte-magi.png",
-	        "img/25arteMagikoopa/1-arte-magi.png",
-            "img/25arteMagikoopa/1-arte-magi.png",
-            "img/25arteMagikoopa/1-arte-magi.png"
+            "img/25arteMagi/1-arte-magi.png",
+	        "img/25arteMagi/2-arte-magi.png",
+            "img/25arteMagi/3-arte-magi.png",
+            "img/25arteMagi/4-arte-magi.png"
         ],
         "caracteristicas": [
             "Número de diseño: 27675",
@@ -715,9 +716,9 @@
         "descripcion": "Planta piraña una versión de la franquicia de Mario.",
         "imagenes": [
             "img/26artePlantaPiraña/1-arte-planta.png",
-            "img/26artePlantaPiraña/1-arte-planta.png",
-            "img/26artePlantaPiraña/1-arte-planta.png",
-            "img/26artePlantaPiraña/1-arte-planta.png"
+            "img/26artePlantaPiraña/2-arte-planta.png",
+            "img/26artePlantaPiraña/3-arte-planta.png",
+            "img/26artePlantaPiraña/4-arte-planta.png"
         ],
         "caracteristicas": [
             "Número de diseño: 775362",
@@ -742,9 +743,9 @@
         "descripcion": "Planta de Mario es una versión de la franquicia de Mario.",
         "imagenes": [
             "img/27artePlantaMario/1-arte-planta.png",
-	        "img/27artePlantaMario/1-arte-planta.png",
-            "img/27artePlantaMario/1-arte-planta.png",
-            "img/27artePlantaMario/1-arte-planta.png"
+	        "img/27artePlantaMario/2-arte-planta.png",
+            "img/27artePlantaMario/3-arte-planta.png",
+            "img/27artePlantaMario/4-arte-planta.png"
         ],
         "caracteristicas": [
             "Número de diseño: 29674",
@@ -911,10 +912,10 @@
         "nombre": "Lámpara con cristal tradicional asiática",
         "descripcion": "Lámpara de noche con patrones de paneles tradicionales asiáticos.",
         "imagenes": [
-            "img/33amparaTradicional/1-lampara-tradicional.png",
-            "img/33amparaTradicional/2-lampara-tradicional.png",
-            "img/33amparaTradicional/3-lampara-tradicional.png",
-            "img/33amparaTradicional/4-lampara-tradicional.png"
+            "img/33lamparaTradicional/1-lampara-tradicional.png",
+            "img/33lamparaTradicional/2-lampara-tradicional.png",
+            "img/33lamparaTradicional/3-lampara-tradicional.png",
+            "img/33lamparaTradicional/4-lampara-tradicional.png"
         ],
         "caracteristicas": [
             "Número de diseño: 1291979",
