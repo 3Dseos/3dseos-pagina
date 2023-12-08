@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async function () {
+
   async function cargar() {
     try {
       let response1 = await fetch('/partials/nav.html');
@@ -55,4 +55,3 @@ document.addEventListener("DOMContentLoaded", async function () {
         el: '.swiper-scrollbar',
       },
     });
-})
