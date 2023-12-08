@@ -1,6 +1,4 @@
 
-document.addEventListener("DOMContentLoaded", async function () {
-    try {
         const response = await fetch("json/productos.json");
         const data = await response.json();
 
@@ -9,10 +7,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Itera sobre los datos del JSON y crea las tarjetas
         data.forEach(function (producto) {
+            // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
+            const imagen = producto.imagenes[0];
+
             const cardHtml = `
                 <div class="card">
-                    <div class="img-container">
-                        <img src="${producto.imagenes}" class="card-img-top" alt="${producto.nombre}">
+                    <div class="fixed-card">
+                        <img src="${imagen}" class="img-container" alt="${producto.nombre}">
                         <div class="description">
                             <span class="title">${producto.nombre}</span> 
                             <button class="leer-btn" data-product="${producto.id}">Leer mas</button>
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             // Agrega la tarjeta al contenedor de productos
             productContainer.innerHTML += cardHtml;
         });
+
 
         // Obtén los elementos de los botones de leer más
         const leerButtons = document.querySelectorAll('.leer-btn');
@@ -38,10 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 window.location.href = `detallesProducto.html?id=${productId}`;
             });
         });
-    } catch (error) {
-        console.error("Error al cargar los datos del JSON: ", error);
-    }
-});
+
 
 // funcioon barra de busqueda
 function buscarPorNombre() {

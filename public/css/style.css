@@ -1,7 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap');
+.loader2 {
+  position: fixed;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #0effdf, transparent);
+  overflow: hidden;
+  z-index: 1000;
+  margin-top: .1px;
+}
+.loader-container {
+  position: fixed;
+  top: 83px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #0effdf, transparent);
+  overflow: hidden;
+  z-index: 1000; /* Asegura que el loader esté encima de otros elementos */
+}
+.loader2::after {
+  content: '';
+  position: absolute;
+  transform: translateX(-200px);
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(to right, transparent, #212121, transparent);
+  animation: slide 5s infinite, init 5s; /* Agregado init para la primera ejecución */
+}
 
+@keyframes slide {
+  0% {
+    transform: translateX(100%);
+    width: 100%;
+  }
+
+  25% {
+    transform: translateX(0);
+    width: 50%;
+  }
+
+  55% {
+    transform: translateX(100%);
+    width: 100%;
+  }
+
+  100% {
+    transform: translateX(0);
+    width: 50%;
+  }
+}
+
+@keyframes initial {
+  to {
+    transform: translateX(0);
+  }
+}
+.fixed-card {
+  width: 300px; /* Tamaño fijo de la tarjeta */
+}
+
+.fixed-card img {
+  max-width: 300px;
+  max-height: 100%;
+  object-fit: cover; /* Hace que la imagen cubra la totalidad del contenedor manteniendo las proporciones */
+}
 /* ----------------------------------- */
+
 .contenedor {
   display: flex;
   justify-content: space-between;
@@ -52,6 +117,7 @@
     /* overflow-x: hidden; */
 }
 body{
+  margin-top: 140px;
   background: 
   linear-gradient(90deg, rgba(1, 32, 76, 0.651) 35%, rgba(0,212,255,0) 100%),
   url("../img/fondo-contacto.jpg") right/auto 100% no-repeat;
@@ -75,6 +141,7 @@ p {
   align-items: center;
   height: 85px;
   padding: 5px 10%;
+  z-index: 300;
 }
 
 .header .logo{
@@ -98,7 +165,7 @@ p {
 
 .header .nav-links li{
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 15px;
   padding: 29px;
 }
 
@@ -286,7 +353,7 @@ img{
   background: #ff0084;
   background: -webkit-linear-gradient(to right, #33001b, #ff0084);
   background: linear-gradient(to right, #33001b, #ff0084);
-  width: 100%;
+  max-width: 300px;
 }
 .img-container {
   display: grid;
@@ -308,6 +375,12 @@ img{
   /* backdrop-filter: blur(.1rem); */
   background-color: #00000088;
   border-radius: .5rem 2rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content:center;
+  flex-direction: column;
+white-space:inherit ;
 }
 
 .description:hover {
@@ -317,6 +390,11 @@ img{
 
 .title {
   color: aliceblue;
+}
+.leer-btn{
+  border: 0;
+  background-color: transparent;
+  color: #0effdf;
 }
 
 /* botones publicar */
