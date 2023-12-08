@@ -1,6 +1,4 @@
 
-(async () => {
-    try {
         const response = await fetch("json/productos.json");
         const data = await response.json();
 
@@ -11,7 +9,6 @@
         data.forEach(function (producto) {
             // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
             const imagen = producto.imagenes[0];
-
 
             const cardHtml = `
                 <div class="card">
@@ -44,35 +41,30 @@
             });
         });
 
-    } catch (err) {
-        console.log(`Error al cargar los datos del JSON: ${err.message}`);
-    }
-})();
-
 
 // funcioon barra de busqueda
 function buscarPorNombre() {
     let input = document.getElementById("searchInput").value;
     /* Limpiamos el input | No case sensitive, No importa tildes */
     input = quitarTildes(input.toLowerCase());
-
+    
     /* Quitamos lo que no coincide con la busqueda */
     const productContainer = document.getElementById("product-container");
     let productos = Array.from(productContainer.children);
     productos.forEach(p => {
-        const productName = p.querySelector(".card-title").textContent;
-
+        const productName = p.querySelector(".title").textContent;
+        
         if (quitarTildes(productName.toLowerCase()).includes(input))
-            p.classList.remove("d-none");
-        else
+            p.classList.remove("d-none"); 
+        else 
             p.classList.add("d-none");
     });
 }
 
-function quitarTildes(str) {
+function quitarTildes(str){
     return str.normalize('NFD')
-        .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi, "$1$2")
-        .normalize();
+     .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi,"$1$2")
+     .normalize();
 } /* Source: https://es.stackoverflow.com/questions/62031/eliminar-signos-diacr%C3%ADticos-en-javascript-eliminar-tildes-acentos-ortogr%C3%A1ficos */
 
 document.getElementById("applyFiltersBtn").addEventListener("click", buscarPorNombre);
