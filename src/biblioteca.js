@@ -1,5 +1,5 @@
 
-() => async function () {
+(async () => {
     try {
         const response = await fetch("json/productos.json");
         const data = await response.json();
@@ -42,10 +42,11 @@
                 window.location.href = `detallesProducto.html?id=${productId}`;
             });
         });
-    } catch (error) {
-        console.error("Error al cargar los datos del JSON: ", error);
+
+    } catch (err) {
+        console.log(`Error al cargar los datos del JSON: ${err.message}`);
     }
-}
+})();
 
 
 // funcioon barra de busqueda
