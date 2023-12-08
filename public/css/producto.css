@@ -16,6 +16,12 @@
     align-items: center;
     margin: auto;
 }
+.star.checked {
+    color: rgb(255, 169, 40);
+}
+.star{
+    cursor: pointer;
+}
 /* .product-image {
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
