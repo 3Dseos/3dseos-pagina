@@ -12,17 +12,18 @@
             // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
             const imagen = producto.imagenes[0];
 
+
             const cardHtml = `
-        <div class="card">
-            <div class="fixed-card">
-                <img src="${imagen}" class="img-container" alt="${producto.nombre}">
-                <div class="description">
-                    <span class="title">${producto.nombre}</span> 
-                    <button class="leer-btn" data-product="${producto.id}">Leer mas</button>
+                <div class="card">
+                    <div class="fixed-card">
+                        <img src="${imagen}" class="img-container" data-product="${producto.id}"   alt="${producto.nombre}">
+                        <div class="description">
+                        <span class="title">${producto.nombre}</span> 
+
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    `;
+            `;
 
             // Agrega la tarjeta al contenedor de productos
             productContainer.innerHTML += cardHtml;
