@@ -21,10 +21,10 @@ getDocs(colRef)
             const cardHtml = `
                 <div class="card">
                     <div class="fixed-card">
-                        <img src="${imagen}" class="img-container" alt="${producto.nombre}">
+                        <img src="${imagen}" class="img-container" data-product="${producto.id}"   alt="${producto.nombre}">
                         <div class="description">
-                            <span class="title">${producto.nombre}</span> 
-                            <button class="leer-btn" data-product="${producto.id}">Leer mas</button>
+                        <span class="title">${producto.nombre}</span> 
+
                         </div>
                     </div>
                 </div>
@@ -33,8 +33,8 @@ getDocs(colRef)
             // Agrega la tarjeta al contenedor de productos
             productContainer.innerHTML += cardHtml;
 
-            // Obtén los elementos de los botones de leer más
-            const leerButtons = document.querySelectorAll('.leer-btn');
+        // Obtén los elementos de los botones de leer más
+        const leerButtons = document.querySelectorAll('.img-container');
 
             // Maneja el clic en los botones de leer más
             leerButtons.forEach(function (button) {
@@ -57,24 +57,24 @@ function buscarPorNombre() {
     let input = document.getElementById("searchInput").value;
     /* Limpiamos el input | No case sensitive, No importa tildes */
     input = quitarTildes(input.toLowerCase());
-
+    
     /* Quitamos lo que no coincide con la busqueda */
     const productContainer = document.getElementById("product-container");
     let productos = Array.from(productContainer.children);
     productos.forEach(p => {
-        const productName = p.querySelector(".card-title").textContent;
-
+        const productName = p.querySelector(".title").textContent;
+        
         if (quitarTildes(productName.toLowerCase()).includes(input))
-            p.classList.remove("d-none");
-        else
+            p.classList.remove("d-none"); 
+        else 
             p.classList.add("d-none");
     });
 }
 
-function quitarTildes(str) {
+function quitarTildes(str){
     return str.normalize('NFD')
-        .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi, "$1$2")
-        .normalize();
+     .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi,"$1$2")
+     .normalize();
 } /* Source: https://es.stackoverflow.com/questions/62031/eliminar-signos-diacr%C3%ADticos-en-javascript-eliminar-tildes-acentos-ortogr%C3%A1ficos */
 
 document.getElementById("applyFiltersBtn").addEventListener("click", buscarPorNombre);

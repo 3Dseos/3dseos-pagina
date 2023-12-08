@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // Encuentra el producto correspondiente en el JSON utilizando el ID
     producto = data.find(item => item.id === parseInt(productId, 10));
-
+    document.title = `${producto.nombre}`
     //_____________formulario_____________________________________________
 
     const comentarioForm = document.getElementById("comentarioForm");
