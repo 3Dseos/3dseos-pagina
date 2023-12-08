@@ -1,4 +1,4 @@
-
+document.addEventListener("DOMContentLoaded", async function () {
         const response = await fetch("json/productos.json");
         const data = await response.json();
 
@@ -68,3 +68,4 @@ function quitarTildes(str){
 } /* Source: https://es.stackoverflow.com/questions/62031/eliminar-signos-diacr%C3%ADticos-en-javascript-eliminar-tildes-acentos-ortogr%C3%A1ficos */
 
 document.getElementById("applyFiltersBtn").addEventListener("click", buscarPorNombre);
+})
