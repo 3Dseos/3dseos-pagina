@@ -2,9 +2,11 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: {
+        firebase: './src/firebase.js'
+    },
     output: {
         path: path.resolve(__dirname, 'public/js'),
-        filename: 'bundle.js'
+        filename: '[name].js'
     }
 };
