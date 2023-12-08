@@ -25,6 +25,9 @@
   }
   cargar()
 
+  document.querySelector('#nav-menu-open').addEventListener('click', openNav);
+  document.querySelector('#nav-menu-close').addEventListener('click', closeNav);
+
   const swiper = new Swiper('#miCarousel', {
       // Optional parameters
       direction: 'horizontal',
