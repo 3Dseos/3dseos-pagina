@@ -31,7 +31,7 @@
 
 
         // Obtén los elementos de los botones de leer más
-        const leerButtons = document.querySelectorAll('.leer-btn');
+        const leerButtons = document.querySelectorAll('.img-container');
 
         // Maneja el clic en los botones de leer más
         leerButtons.forEach(function (button) {
