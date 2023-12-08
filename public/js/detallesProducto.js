@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productId = urlParams.get('id');
 
     // Realiza una solicitud HTTP para obtener los detalles del producto con el ID correspondiente desde el archivo JSON
-    const response = await fetch("json/productos.json");
+    const response = await fetch("/json/productos.json");
     const data = await response.json();
 
     // Encuentra el producto correspondiente en el JSON utilizando el ID
@@ -20,16 +20,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const comentarioForm = document.getElementById("comentarioForm");
     const stars = document.querySelectorAll('.star');
+    const submitBtn = document.getElementById("submitBtn");
+
 
     comentarioForm.addEventListener("submit", function (e) {
         e.preventDefault();
         const nombre = document.getElementById("userName").value;
-        const comentario = document.getElementById("userComment").value;
+        const comentarios = document.getElementById("userComment").value;
         const nuevoComentario = {
             usuario: nombre,
             calificacion: calificacion,
             fecha: obtenerFechaActual(),
-            comentario: comentario
+            comentario: comentarios
         };
 
         // Agrega el nuevo comentario al arreglo de comentarios del producto actual
@@ -77,16 +79,16 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     function cargarCarrusel(producto) {
         const carouselInner = document.querySelector("#productCarousel .carousel-inner");
-        const carouselHTML = producto.imagenes.map((imagen, index) => `
+        const carouselHTML = producto.imagenes.map((imagenes, index) => `
              <div class="carousel-item${index === 0 ? ' active' : ''}" id="miCarousel">
-                 <img class="d-block w-100" src="${imagen}" alt="Imagen ${index + 1}">
+                 <img class="" src="${imagenes}" alt="Imagen ${index + 1}">
              </div>
          `).join('');
 
         const miniaturasInner = document.getElementById('img-miniaturas');
         const miniaturasHTML = producto.imagenes.map((imagen, index) => `
             <div class="col-3" >
-            <img src="${imagen}" class="d-block w-100 thumbnail" alt="Miniatura 1"
+            <img src="${imagen}" class="d-block w-100 img-top thumbnail" alt="Miniatura 1"
                 data-slide-to="${index}">
             </div>`).join('');
 
@@ -127,19 +129,21 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const nuevoComentario = `
                     <div class="media my-2">
                         <img src="img/user.png" class="mr-2 img-comentario" alt="${comentario.usuario}">
-                        <div class="media-body">
+                        <div class="media-body text-white">
                             <h5 class="mt-0 d-flex justify-content-between align-items-center">
-                                <div class="divElementosComentarios">
+                                <div class="divElementosComentarios text-white">
                                     ${comentario.usuario}
-                                    <span class="text-warning mr-1">${estrellasHTML}</span>
+                                    <span class=" mr-1">${estrellasHTML}</span>
                                 </div>
-                                <small class="">${comentario.fecha}</small>
+                                <small class="text-white">${comentario.fecha}</small>
                             </h5>
-                            <p>${comentario.comentario}</p>
+                            <p class="text-white">${comentario.comentario}</p>
                         </div>
                     </div>
                 `;
                 comentariosContainer.innerHTML += nuevoComentario;
+
+                console.log('no se puede cargar el coment')
             }
         } else {
             comentariosContainer.innerHTML += 'No hay comentarios disponibles para este producto.';
