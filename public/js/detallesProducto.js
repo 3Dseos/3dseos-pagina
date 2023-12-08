@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const productId = urlParams.get('id');
 
     // Realiza una solicitud HTTP para obtener los detalles del producto con el ID correspondiente desde el archivo JSON
-    const response = await fetch("json/productos.json");
+    const response = await fetch("/json/productos.json");
     const data = await response.json();
 
     // Encuentra el producto correspondiente en el JSON utilizando el ID
@@ -77,9 +77,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     function cargarCarrusel(producto) {
         const carouselInner = document.querySelector("#productCarousel .carousel-inner");
-        const carouselHTML = producto.imagenes.map((imagen, index) => `
+        const carouselHTML = producto.imagenes.map((imagenes, index) => `
              <div class="carousel-item${index === 0 ? ' active' : ''}" id="miCarousel">
-                 <img class="d-block w-100" src="${imagen}" alt="Imagen ${index + 1}">
+                 <img class="" src="${imagenes}" alt="Imagen ${index + 1}">
              </div>
          `).join('');
 
@@ -129,17 +129,18 @@ document.addEventListener("DOMContentLoaded", async function () {
                         <img src="img/user.png" class="mr-2 img-comentario" alt="${comentario.usuario}">
                         <div class="media-body">
                             <h5 class="mt-0 d-flex justify-content-between align-items-center">
-                                <div class="divElementosComentarios">
+                                <div class="divElementosComentarios text-warning">
                                     ${comentario.usuario}
-                                    <span class="text-warning mr-1">${estrellasHTML}</span>
+                                    <span class=" mr-1">${estrellasHTML}</span>
                                 </div>
-                                <small class="">${comentario.fecha}</small>
+                                <small class="text-white">${comentario.fecha}</small>
                             </h5>
-                            <p>${comentario.comentario}</p>
+                            <p class="text-white">${comentario.comentario}</p>
                         </div>
                     </div>
                 `;
                 comentariosContainer.innerHTML += nuevoComentario;
+                console.log('no se puede cargar el coment')
             }
         } else {
             comentariosContainer.innerHTML += 'No hay comentarios disponibles para este producto.';

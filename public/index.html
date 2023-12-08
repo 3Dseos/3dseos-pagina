@@ -19,7 +19,12 @@
 </head>
 
 <body>
-<header class="header"></header>
+    <header class="header fixed-top"></header>
+    <div class="loader-container">
+        <!-- Contenedor del loader -->
+        <div class="loader2"></div>
+    </div>
+
         <!--carrusel-->
         <section class="seccion-carrusel">
             <div class="container">
@@ -53,10 +58,13 @@
                             <div class="swiper-wrapper">
                                 <!-- Slides -->
                                 <div class="swiper-slide">
-                                    <img src="img/img1.jpg" class="img-fluid" alt="Imagen 1">
+                                    <img src="img/img10.jpg" class="img-fluid" alt="Imagen 1">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="img/img2.jpg" class="img-fluid" alt="Imagen 2">
+                                    <img src="img/img8.jpg" class="img-fluid" alt="Imagen 2">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="img/img1.jpg" class="img-fluid" alt="Imagen 3">
                                 </div>
                                 <div class="swiper-slide">
                                     <img src="img/img3.jpg" class="img-fluid" alt="Imagen 3">
@@ -79,8 +87,8 @@
             <h2 class="tituloCard">Destacados 3D</h2>
             <div class="containerCard">
                 <div class="card">
-                    <div class="img-container">
-                            <img src="img/card/1-pro-mano.jpg">
+                    <div class="fixed-card">
+                            <img src="img/card/1-pro-mano.jpg" class="img-container">
                         <div class="description">
                             <span class="title">
                                 Prótesis de mano
@@ -89,8 +97,8 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="img-container">
-                            <img src="img/card/2-pro-dedo.jpg">
+                    <div class="fixed-card">
+                            <img src="img/card/2-pro-dedo.jpg" class="img-container">
                         <div class="description">
                             <span class="title">
                                 Prótesis de dedo
@@ -99,9 +107,9 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="img-container">
+                    <div class="fixed-card">
                         <div class="cardImg">
-                            <img src="img/card/3-pro-pierna.jpg">
+                            <img src="img/card/3-pro-pierna.jpg" class="img-container">
                         </div>
                         <div class="description">
                             <span class="title">
@@ -112,8 +120,8 @@
                 </div>
                 <div class="card">
                     <div class="img-container">
-                        <div class="cardImg">
-                            <img src="img/card/4-pro-bio-brazo.png">
+                        <div class="fixed-card">
+                            <img src="img/card/4-pro-bio-brazo.png" class="img-container">
                         </div>
                         <div class="description">
                             <span class="title">
@@ -124,8 +132,8 @@
                 </div>
                 <div class="card">
                     <div class="img-container">
-                        <div class="cardImg">
-                            <img src="img/card/5-pro-art-mano.png">
+                        <div class="fixed-card">
+                            <img src="img/card/5-pro-art-mano.png" class="img-container">
                         </div>
                         <div class="description">
                             <span class="title">
@@ -135,9 +143,9 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="img-container">
-                        <div class="cardImg">
-                            <img src="img/card/6-pro-fer-mun-ant.png">
+                    <div class="">
+                        <div class="fixed-card">
+                            <img src="img/card/6-pro-fer-mun-ant.png" class="img-container">
                         </div>
                         <div class="description">
                             <span class="title">
@@ -164,6 +172,8 @@
         crossorigin="anonymous"></script>
     <script src="js\loadNavFooter.js"></script>
     <script type="module" src="js/biblioteca.js"></script>
+<!-- Firebase imports -->
+    <script src="js/bundle.js"></script>
 </body>
 
 </html>
