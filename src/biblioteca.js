@@ -1,16 +1,18 @@
 
-const response = await fetch("json/productos.json");
-const data = await response.json();
+() => async function () {
+    try {
+        const response = await fetch("json/productos.json");
+        const data = await response.json();
 
-// Obtiene el contenedor de productos
-const productContainer = document.getElementById("product-container");
+        // Obtiene el contenedor de productos
+        const productContainer = document.getElementById("product-container");
 
-// Itera sobre los datos del JSON y crea las tarjetas
-data.forEach(function (producto) {
-    // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
-    const imagen = producto.imagenes[0];
+        // Itera sobre los datos del JSON y crea las tarjetas
+        data.forEach(function (producto) {
+            // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
+            const imagen = producto.imagenes[0];
 
-    const cardHtml = `
+            const cardHtml = `
         <div class="card">
             <div class="fixed-card">
                 <img src="${imagen}" class="img-container" alt="${producto.nombre}">
@@ -22,24 +24,28 @@ data.forEach(function (producto) {
         </div>
     `;
 
-    // Agrega la tarjeta al contenedor de productos
-    productContainer.innerHTML += cardHtml;
-});
+            // Agrega la tarjeta al contenedor de productos
+            productContainer.innerHTML += cardHtml;
+        });
 
 
-// Obtén los elementos de los botones de leer más
-const leerButtons = document.querySelectorAll('.leer-btn');
+        // Obtén los elementos de los botones de leer más
+        const leerButtons = document.querySelectorAll('.leer-btn');
 
-// Maneja el clic en los botones de leer más
-leerButtons.forEach(function (button) {
-    button.addEventListener('click', function (event) {
-        // Obtén el identificador del producto desde el atributo data-product
-        const productId = event.target.getAttribute('data-product');
+        // Maneja el clic en los botones de leer más
+        leerButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                // Obtén el identificador del producto desde el atributo data-product
+                const productId = event.target.getAttribute('data-product');
 
-        // Redirige al usuario a la página de detalles del producto con el identificador del producto
-        window.location.href = `detallesProducto.html?id=${productId}`;
-    });
-});
+                // Redirige al usuario a la página de detalles del producto con el identificador del producto
+                window.location.href = `detallesProducto.html?id=${productId}`;
+            });
+        });
+    } catch (error) {
+        console.error("Error al cargar los datos del JSON: ", error);
+    }
+}
 
 
 // funcioon barra de busqueda
