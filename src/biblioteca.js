@@ -1,66 +1,46 @@
-import { app } from './firebase'
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
 
-// Initialize Cloud Firestore and get a reference to the service
-const db = getFirestore(app);
-//collection reference
-const colRef = collection(db, 'productos-test');
+const response = await fetch("json/productos.json");
+const data = await response.json();
 
-document.addEventListener("DOMContentLoaded", async function () {
-    try {
-        //const response = await fetch("json/productos.json");
-        //const data = await response.json();
-        getDocs(colRef)
-            .then((snapshot) => {
-                // Obtiene el contenedor de productos
-                const productContainer = document.getElementById("product-container");
-                //console.log(snapshot);
+// Obtiene el contenedor de productos
+const productContainer = document.getElementById("product-container");
 
-                // Itera sobre los datos del JSON y crea las tarjetas
-                snapshot.docs.forEach(function (doc) {
-                    //console.log(producto.data());
-                    const producto = doc.data();
-                    //console.log(producto);
-                    const cardHtml = `
-                <div class="card">
-                    <div class="img-container">
-                        <img src="${producto.imagenes}" class="card-img-top" alt="${producto.nombre}">
-                        <div class="description">
-                            <span class="title">${producto.nombre}</span> 
-                            <button class="leer-btn" data-product="${producto.id}">Leer mas</button>
-                        </div>
-                    </div>
+// Itera sobre los datos del JSON y crea las tarjetas
+data.forEach(function (producto) {
+    // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
+    const imagen = producto.imagenes[0];
+
+    const cardHtml = `
+        <div class="card">
+            <div class="fixed-card">
+                <img src="${imagen}" class="img-container" alt="${producto.nombre}">
+                <div class="description">
+                    <span class="title">${producto.nombre}</span> 
+                    <button class="leer-btn" data-product="${producto.id}">Leer mas</button>
                 </div>
-                `;
+            </div>
+        </div>
+    `;
 
-                    // Agrega la tarjeta al contenedor de productos
-                    productContainer.innerHTML += cardHtml;
-                });
-
-                // Obtén los elementos de los botones de leer más
-                const leerButtons = document.querySelectorAll('.leer-btn');
-
-                // Maneja el clic en los botones de leer más
-                leerButtons.forEach(function (button) {
-                    button.addEventListener('click', function (event) {
-                        // Obtén el identificador del producto desde el atributo data-product
-                        const productId = event.target.getAttribute('data-product');
-
-                        // Redirige al usuario a la página de detalles del producto con el identificador del producto
-                        window.location.href = `detallesProducto.html?id=${productId}`;
-                    });
-                });
-            })
-            .catch(err => {
-                console.log(err.message);
-            });
-
-
-
-    } catch (error) {
-        console.error("Error al cargar los datos del JSON: ", error);
-    }
+    // Agrega la tarjeta al contenedor de productos
+    productContainer.innerHTML += cardHtml;
 });
+
+
+// Obtén los elementos de los botones de leer más
+const leerButtons = document.querySelectorAll('.leer-btn');
+
+// Maneja el clic en los botones de leer más
+leerButtons.forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        // Obtén el identificador del producto desde el atributo data-product
+        const productId = event.target.getAttribute('data-product');
+
+        // Redirige al usuario a la página de detalles del producto con el identificador del producto
+        window.location.href = `detallesProducto.html?id=${productId}`;
+    });
+});
+
 
 // funcioon barra de busqueda
 function buscarPorNombre() {
