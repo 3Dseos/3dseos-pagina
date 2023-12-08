@@ -539,10 +539,10 @@
         "nombre": "Yoshi",
         "descripcion": "Yoshi es un personaje de la larga y exitosa franquicia de Mario.",
         "imagenes": [
-            "img/16arteYoshi/1-arte-yoshi.png",
-	        "img/16arteYoshi/2-arte-yoshi.png",
-	        "img/16arteYoshi/3-arte-yoshi.png",
-            "img/16arteYoshi/4-arte-yoshi.png"
+            "img/20arteYoshi/1-arte-yoshi.png",
+	        "img/20arteYoshi/2-arte-yoshi.png",
+	        "img/20arteYoshi/3-arte-yoshi.png",
+            "img/20arteYoshi/4-arte-yoshi.png"
         ],
         "caracteristicas": [
             "Número de diseño: 23553",
@@ -568,10 +568,10 @@
         "nombre": "Yoshi bebé",
         "descripcion": "Yoshi en tamaño bebé es un personaje de la larga y exitosa franquicia de Mario.",
         "imagenes": [
-            "img/16arteYoshiBebe/1-arte-yoshi.png",
-            "img/16arteYoshiBebe/2-arte-yoshi.png",
-            "img/16arteYoshiBebe/3-arte-yoshi.png",
-            "img/16arteYoshiBebe/4-arte-yoshi.png"
+            "img/21arteYoshiBebe/1-arte-yoshi.png",
+            "img/21arteYoshiBebe/2-arte-yoshi.png",
+            "img/21arteYoshiBebe/3-arte-yoshi.png",
+            "img/21arteYoshiBebe/4-arte-yoshi.png"
         ],
         "caracteristicas": [
             "Número de diseño: 1268610",
@@ -630,10 +630,10 @@
         "nombre": "Koopa Troopa Verde",
         "descripcion": "Koopa Troopa Verde es un personaje de la larga y exitosa franquicia de Mario.",
         "imagenes": [
-            "img/22arteKoopaVerde/1-arte-koopa.png",
-            "img/22arteKoopaVerde/2-arte-koopa.png",
-            "img/22arteKoopaVerde/3-arte-koopa.png",
-            "img/22arteKoopaVerde/4-arte-koopa.png"
+            "img/23arteKoopaVerde/1-arte-koopa.png",
+            "img/23arteKoopaVerde/2-arte-koopa.png",
+            "img/23arteKoopaVerde/3-arte-koopa.png",
+            "img/23arteKoopaVerde/4-arte-koopa.png"
         ],
         "caracteristicas": [
             "Número de diseño: 24283",
