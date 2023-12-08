@@ -1,13 +1,13 @@
 
-.product-image {
+/* .product-image {
     border-radius: 10px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
-}
+} */
 
-.product-image:hover {
+/* .product-image:hover {
     transform: scale(1.05);
-}
+} */
 /*
 .product-details {
     background-color: white;
@@ -21,7 +21,7 @@
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.2);
 }
 */
-
+/* 
 .btn-primary {
     background-color: #007bff;
     border: none;
@@ -30,13 +30,13 @@
     font-size: 18px;
     letter-spacing: 1px;
     transition: background-color 0.3s ease-in-out;
-}
+} */
 
-.btn-primary:hover {
+/* .btn-primary:hover {
     background-color: #0056b3;
-}
+} */
 
-.btn-primary {
+/* .btn-primary {
     background-color: #007bff;
     border: none;
     border-radius: 5px;
@@ -44,13 +44,13 @@
     font-size: 18px;
     letter-spacing: 1px;
     transition: background-color 0.3s ease-in-out;
-}
+} */
 
 /* Estilos para móviles */
 @media (max-width: 980px) {
-    #comentarioTitulo {
+    /* #comentarioTitulo {
         margin-top: 30px;
-    }
+    } */
     .container .bg-light {
         border: none;
         box-shadow: none;
@@ -58,9 +58,9 @@
     .shadow {
         box-shadow: none !important; /* Elimina la sombra del elemento con clase .shadow en dispositivos móviles */
     }
-    .product-details{
+    /* .product-details{
         margin-top: 50px;
-    }
+    } */
     #downloadButton .icon {
         display: none;
     }
@@ -79,17 +79,17 @@
     #carrusel-info{
         margin: 100px 0;
     }
-    #img-miniaturas{
+    /* #img-miniaturas{
         padding-top: 20px;
-    }
+    } */
 
     #form-comentarios{
         margin: 100px 0;
     }
-
+/* 
     #comentarioTitulo{
         margin-top:10px;
-    }
+    } */
     #titulo-reseñas{
         margin: 0 !important;
         padding: 0 !important;
@@ -139,7 +139,7 @@
     margin-top: 80px;
     /* Ajusta este valor según la altura del primer comentario */
 /*}*/ 
-
+/* 
 .media {
     border: 1px solid #ddd;
     padding: 15px;
@@ -170,7 +170,7 @@
 }
 
 /* Estilos para las calificaciones */
-.rating {
+/* .rating {
     color: #f39c12;
 }
 .star {
@@ -185,21 +185,21 @@
 
 .colorear {
     color: gold;
-}
+} */
 
 
 /* Estilos para las tarjetas de productos relacionados */
-.card {
+/* .card {
     border: none;
     transition: transform 0.3s ease-in-out;
 }
 
 .card:hover {
     transform: scale(1.05);
-}
+} */
 
 /* carrusel 1 */
-.carousel-inner .carousel-item {
+/* .carousel-inner .carousel-item {
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
@@ -209,48 +209,47 @@
 .carousel-inner .carousel-item-prev {
     opacity: 0.5;
 
-}
+} */
 
 /* Estilos para las imágenes del carrusel */
-.carousel-inner .carousel-item img {
+/* .carousel-inner .carousel-item img {
     width: 100%;
     height: 300px;
     object-fit: contain;
     object-position: center;
     transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
-}
+} */
 
-
+/* 
 .carrusel-principal .carousel-item img:hover{
-   /* height: 100%;*/
+   /* height: 100%;
     transform: scale(1.1);
     box-shadow: 10px 10px 10px 0px rgba(0,0,0,0.75);
-}
+} */
 
 /*miniaturas*/
 /* Agrega un efecto de escala y bordes con sombra al hacer hover sobre las miniaturas */
-.thumbnail {
+/* .thumbnail {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
     height: 80px;
    
-}
+} */
 
-.thumbnail:hover {
+/* .thumbnail:hover {
     transform: scale(1.1);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   
-}
+} */
 
-.logo {
-    max-height: 40px; /* Establece la altura máxima del logo */
-    /* Puedes ajustar este valor según el tamaño deseado para el logo */
-    width: auto; /* Asegura que el ancho se ajuste automáticamente según la altura */
-}
+/* .logo {
+    max-height: 40px; /* Establece la altura máxima del logo
+    /* Puedes ajustar este valor según el tamaño deseado para el logo 
+    width: auto; Asegura que el ancho se ajuste automáticamente según la altura}
 /* Estilos adicionales */
 
-#botones-comentario .btn-comentario {
-    margin-top: -40px; /* Puedes ajustar el valor según sea necesario */
+/* #botones-comentario .btn-comentario {
+    margin-top: -40px; /* Puedes ajustar el valor según sea necesario 
     height: 30px;
-}
+}  */

@@ -12,7 +12,9 @@
     <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
-    <!--Favicon--> 
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="icon" type="image/x-icon" href="img/logo.png">
 </head>
 
@@ -24,14 +26,14 @@
                 <div class="row">
                     <!-- Primera columna (4 columnas) -->
                     <div class="col-lg-4 col-sm-12">
-                        <div class="primer-columna">
+                        <div class="primer-columna text-center">
                             <!-- Contenido de la primera columna -->
                             <h3 class="text-center">Bienvenido al mundo tridimensional</h3>
                             <p>En 3Dseos, te invitamos a explorar un amplio abanico de oportunidades, con un enfoque destacado en el ámbito de las prótesis.
                                Descubrirás categorías que incluyen juguetes, artículos de arte y accesorios para el hogar.
                                <br>Nuestra plataforma cuenta con una comunidad activa que te ayudará a estimular y potenciar tu creatividad en proyectos de impreresión 3D.
                             </p>
-                            <p class="text-center"><strong>¡Únete a nosotros y desata tu potencial creativo en3D!</strong></p>
+                            <p class="text-center"><strong>¡Únete a nosotros y desata tu potencial creativo en 3D!</strong></p>
                             <!-- botones personalizados -->
                             <div class="d-grid gap-3 d-xl-flex">
                                 <a class="btn" href="#"><button class="btn-Publicar">
@@ -46,29 +48,26 @@
 
                     <!-- Segunda columna (8 columnas) con Carrusel -->
                     <div class="col-lg-8 col-sm-12">
-                        <div id="miCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                            <!-- Imágenes del Carrusel -->
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="img/img1.jpg" alt="Imagen 1">
+                        <div id="miCarousel" class="swiper-container">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <img src="img/img1.jpg" class="img-fluid" alt="Imagen 1">
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="img/img2.jpg" alt="Imagen 2">
+                                <div class="swiper-slide">
+                                    <img src="img/img2.jpg" class="img-fluid" alt="Imagen 2">
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="img/img3.jpg" alt="Imagen 3">
+                                <div class="swiper-slide">
+                                    <img src="img/img3.jpg" class="img-fluid" alt="Imagen 3">
                                 </div>
+                                <div class="swiper-pagination"></div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
                             </div>
-
-                            <!-- Controles del Carrusel -->
-                            <a class="carousel-control-prev" href="#miCarousel" role="button" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Anterior</span>
-                            </a>
-                            <a class="carousel-control-next" href="#miCarousel" role="button" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Siguiente</span>
-                            </a>
+                            <!-- If we need pagination -->
+                    
+                            <!-- If we need navigation buttons -->
                         </div>
                     </div>
                 </div>
@@ -158,14 +157,13 @@
         <!--fin estilos cards home - by Ayleen C-->
     </div>
     <footer class="pie-pagina"></footer>
-
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
     <script src="js\loadNavFooter.js"></script>
-    <!-- Firebase imports -->
-    <script src="js/bundle.js"></script>
+    <script type="module" src="js/biblioteca.js"></script>
 </body>
 
 </html>
