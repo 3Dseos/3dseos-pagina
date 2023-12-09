@@ -9,8 +9,10 @@
               document.querySelector('.header').innerHTML = data1;
               document.querySelector('.pie-pagina').innerHTML = data2;
           } else {
-            console.error('Error al cargar el archivo', response.statusText);
+            console.error('Error al cargar el archivo', response1.statusText);
           }
+          document.querySelector('#nav-menu-open').addEventListener('click', openNav);
+          document.querySelector('#nav-menu-close').addEventListener('click', closeNav);
         } catch (error) {
           console.error('Error al cargar el archivo:', error);
       }
@@ -24,6 +26,7 @@
       document.getElementById("mobile-menu").style.width = "0%";
   }
   cargar()
+
 
   const swiper = new Swiper('#miCarousel', {
       // Optional parameters

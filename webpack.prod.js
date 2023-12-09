@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: {
         biblioteca: './src/biblioteca.js',
         calculadora: './src/calculadora.js',
