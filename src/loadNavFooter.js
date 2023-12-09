@@ -1,8 +1,8 @@
 
   async function cargar() {
     try {
-      let response1 = await fetch('/partials/nav.html');
-      let response2 = await fetch('/partials/footer.html');
+      let response1 = await fetch('partials/nav.html');
+      let response2 = await fetch('partials/footer.html');
       if (response1.ok && response2.ok) {
               let data1 = await response1.text();
               let data2 = await response2.text();

@@ -1,25 +1,36 @@
+import { app } from './firebase'
+import { getFirestore, collection, getDoc, doc } from 'firebase/firestore';
+
+//Init services
+const db = getFirestore();
+const colectionName = "productos";
+
 
 document.addEventListener("DOMContentLoaded", async function () {
-    let paginaActual = 1;
-    const comentariosPorPagina = 3;
-    let calificacion = 0;
-    let producto;
 
     // Obtiene el identificador del producto desde la URL
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
     // Realiza una solicitud HTTP para obtener los detalles del producto con el ID correspondiente desde el archivo JSON
-    const response = await fetch("/json/productos.json");
-    const data = await response.json();
+    //const response = await fetch("/json/productos.json");
+    //const data = await response.json();
+    const docRef = doc(db, colectionName, productId); 
+    const docSnap = await getDoc(docRef);
+    let producto = {...docSnap.data(), id: docSnap.id};
 
     // Encuentra el producto correspondiente en el JSON utilizando el ID
-    producto = data.find(item => item.id === parseInt(productId, 10));
+    //producto = data.find(item => item.id === parseInt(productId, 10));
     document.title = `${producto.nombre}`
+    
     //_____________formulario_____________________________________________
 
+    let paginaActual = 1;
+    const comentariosPorPagina = 3;
+    let calificacion = 0;
+
     const comentarioForm = document.getElementById("comentarioForm");
-    const stars = document.querySelectorAll('.star');
+    const stars = document.querySelectorAll('#comentarioForm .star');
     const submitBtn = document.getElementById("submitBtn");
 
 
@@ -143,7 +154,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `;
                 comentariosContainer.innerHTML += nuevoComentario;
 
-                console.log('no se puede cargar el coment')
+                //console.log('no se puede cargar el coment')
             }
         } else {
             comentariosContainer.innerHTML += 'No hay comentarios disponibles para este producto.';

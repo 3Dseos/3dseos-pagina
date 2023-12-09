@@ -1,9 +1,9 @@
 import { app } from './firebase'
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, getDocs, doc, setDoc, addDoc } from 'firebase/firestore';
 
 //Init services
-const db = getFirestore();
-//collection ref
+const db = getFirestore(app);
+
 let collectionName = 'productos';
 const colRef = collection(db, collectionName);
 
@@ -13,7 +13,7 @@ const productContainer = document.getElementById("product-container");
 getDocs(colRef)
     .then((snapshot) => {
         snapshot.docs.forEach((doc) => {
-            const producto = doc.data();
+            const producto = { ...doc.data(), id: doc.id };
 
             // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
             const imagen = producto.imagenes[0];
@@ -33,12 +33,12 @@ getDocs(colRef)
             // Agrega la tarjeta al contenedor de productos
             productContainer.innerHTML += cardHtml;
 
-        // Obtén los elementos de los botones de leer más
-        const leerButtons = document.querySelectorAll('.img-container');
+            // Obtén los elementos de las cards
+            const imgContainer = document.querySelectorAll('.img-container');
 
-            // Maneja el clic en los botones de leer más
-            leerButtons.forEach(function (button) {
-                button.addEventListener('click', function (event) {
+            // Maneja el clic en los botones
+            imgContainer.forEach(function (card) {
+                card.addEventListener('click', function (event) {
                     // Obtén el identificador del producto desde el atributo data-product
                     const productId = event.target.getAttribute('data-product');
 
@@ -52,29 +52,29 @@ getDocs(colRef)
         console.log(err.message);
     });
 
-// funcioon barra de busqueda
+// funcion barra de busqueda
 function buscarPorNombre() {
     let input = document.getElementById("searchInput").value;
     /* Limpiamos el input | No case sensitive, No importa tildes */
     input = quitarTildes(input.toLowerCase());
-    
+
     /* Quitamos lo que no coincide con la busqueda */
     const productContainer = document.getElementById("product-container");
     let productos = Array.from(productContainer.children);
     productos.forEach(p => {
         const productName = p.querySelector(".title").textContent;
-        
+
         if (quitarTildes(productName.toLowerCase()).includes(input))
-            p.classList.remove("d-none"); 
-        else 
+            p.classList.remove("d-none");
+        else
             p.classList.add("d-none");
     });
 }
 
-function quitarTildes(str){
+function quitarTildes(str) {
     return str.normalize('NFD')
-     .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi,"$1$2")
-     .normalize();
+        .replace(/([aeio])\u0301|(u)[\u0301\u0308]/gi, "$1$2")
+        .normalize();
 } /* Source: https://es.stackoverflow.com/questions/62031/eliminar-signos-diacr%C3%ADticos-en-javascript-eliminar-tildes-acentos-ortogr%C3%A1ficos */
 
 document.getElementById("applyFiltersBtn").addEventListener("click", buscarPorNombre);
@@ -86,8 +86,8 @@ const jsonPath = "json/productos.json";
 
 async function leerYProcesarJson() {
     try {
-        
-        const response = await fetch(jsonPath); 
+
+        const response = await fetch(jsonPath);
         const data = await response.json();
         //------DEBUG--------
         // console.log(data);
@@ -96,17 +96,18 @@ async function leerYProcesarJson() {
         // }
         //-------------------
         data.forEach(p => {
-            //delete p.id; //Quita el id del objeto para no subirlo a la db
-            console.log(p);
-            //addDoc(collection(db, collectionName), p)
+            const id = `${p.id}`;
+            delete p.id; //Quita el id de dentro objeto para no subirlo a la db
+            setDoc(doc(db, 'productos-test', id), p);
         });
+
     } catch (error) {
-        console.log(`Se produjo un error: ${error.message}`);
+        console.log(`Se produjo un error: ${error}`);
     }
 }
 
 const subirJsonBtn = document.querySelector('#SubirJson');
-subirJsonBtn.addEventListener('click', () => console.log("Sin efecto. Modificar el codigo para subirlo."));
+subirJsonBtn.addEventListener('click', leerYProcesarJson);
 
 
 //getDocs(collection(db, collectionName))
