@@ -1,29 +1,42 @@
+// Cloud Firestore Database | https://firebase.google.com/docs/firestore/quickstart?hl=es
+import { getFirestore, collection, doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+// Cloud Firestore Storage | https://firebase.google.com/docs/storage/web/start?hl=es
+import { getStorage, ref, getDownloadURL  } from "firebase/storage";
+import { app } from './firebase'
+
+//Inicializar base de datos
+const db = getFirestore();
+const storage = getStorage(app);
+
 document.addEventListener("DOMContentLoaded", async function () {
-    let paginaActual = 1;
-    const comentariosPorPagina = 3;
-    let calificacion = 0;
-    let producto;
 
     // Obtiene el identificador del producto desde la URL
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
     
-    // Realiza una solicitud HTTP para obtener los detalles del producto con el ID correspondiente desde el archivo JSON
-    const response = await fetch("/json/productos.json");
-    const data = await response.json();
+    //Obtenemos la referencia al 'documento'
+    const productRef = doc(db, "productos", productId); 
     
+    //Obtenemos un snapshot (foto) del documento en el momento actual
+    let productSnapshot = await getDoc(productRef);
+    let producto = {...productSnapshot.data(), id: productSnapshot.id};
+
     // Encuentra el producto correspondiente en el JSON utilizando el ID
-    producto = data.find(item => item.id === parseInt(productId, 10));
-    
+    //producto = data.find(item => item.id === parseInt(productId, 10));
     document.title = `${producto.nombre}`
+    
     //_____________formulario_____________________________________________
 
+    let paginaActual = 1;
+    const comentariosPorPagina = 3;
+    let calificacion = 0;
+
     const comentarioForm = document.getElementById("comentarioForm");
-    const stars = document.querySelectorAll('.star');
+    const stars = document.querySelectorAll('#comentarioForm .star');
     const submitBtn = document.getElementById("submitBtn");
 
 
-    comentarioForm.addEventListener("submit", function (e) {
+    comentarioForm.addEventListener("submit", async function (e) {
         e.preventDefault();
         const nombre = document.getElementById("userName").value;
         const comentarios = document.getElementById("userComment").value;
@@ -35,7 +48,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         };
 
         // Agrega el nuevo comentario al arreglo de comentarios del producto actual
-        producto.comentarios.push(nuevoComentario);
+        await updateDoc(productRef, {
+            comentarios: arrayUnion(nuevoComentario)
+        });
+        productSnapshot = await getDoc(productRef);
+        producto = {...productSnapshot.data(), id: productSnapshot.id};
+        
 
         // Limpia el formulario y actualiza la visualización de los comentarios
         comentarioForm.reset();
@@ -77,16 +95,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-    function cargarCarrusel(producto) {
+    async function cargarCarrusel(producto) {
+        const arrImgURLs = await obtenerURLsEnDB(producto.imagenes);
         const carouselInner = document.querySelector("#productCarousel .carousel-inner");
-        const carouselHTML = producto.imagenes.map((imagenes, index) => `
+        const carouselHTML = arrImgURLs.map((imagenes, index) => `
              <div class="carousel-item${index === 0 ? ' active' : ''}" id="miCarousel">
                  <img class="" src="${imagenes}" alt="Imagen ${index + 1}">
              </div>
          `).join('');
 
         const miniaturasInner = document.getElementById('img-miniaturas');
-        const miniaturasHTML = producto.imagenes.map((imagen, index) => `
+        const miniaturasHTML = arrImgURLs.map((imagen, index) => `
             <div class="col-3" >
             <img src="${imagen}" class="d-block w-100 img-top thumbnail" alt="Miniatura 1"
                 data-slide-to="${index}">
@@ -143,7 +162,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 `;
                 comentariosContainer.innerHTML += nuevoComentario;
 
-                console.log('no se puede cargar el coment')
+                //console.log('no se puede cargar el coment')
             }
         } else {
             comentariosContainer.innerHTML += 'No hay comentarios disponibles para este producto.';
@@ -179,4 +198,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             actualizarEstrellasSeleccionadas();
         });
     });
+
+    async function obtenerURLsEnDB(arrImgPath) {
+        const res = await Promise.all(arrImgPath.map(async (imgPath) => {
+            const url = await getDownloadURL(ref(storage, imgPath));
+            return url;
+        }));
+        return res;
+    }
 });
