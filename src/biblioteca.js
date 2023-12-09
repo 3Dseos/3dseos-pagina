@@ -1,8 +1,12 @@
-import { app } from './firebase'
+// Cloud Firestore Database | https://firebase.google.com/docs/firestore/quickstart?hl=es
 import { getFirestore, collection, getDocs, doc, setDoc, addDoc } from 'firebase/firestore';
+// Cloud Firestore Storage | https://firebase.google.com/docs/storage/web/start?hl=es
+import { getStorage, ref, getDownloadURL  } from "firebase/storage";
+import { app } from './firebase'
 
 //Init services
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 let collectionName = 'productos';
 const colRef = collection(db, collectionName);
@@ -12,11 +16,11 @@ const productContainer = document.getElementById("product-container");
 
 getDocs(colRef)
     .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
+        snapshot.docs.forEach(async (doc) => {
             const producto = { ...doc.data(), id: doc.id };
 
             // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
-            const imagen = producto.imagenes[0];
+            const imagen = await getDownloadURL(ref(storage, producto.imagenes[0]));
 
             const cardHtml = `
                 <div class="card">

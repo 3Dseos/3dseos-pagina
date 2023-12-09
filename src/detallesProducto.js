@@ -1,8 +1,12 @@
-import { app } from './firebase'
+// Cloud Firestore Database | https://firebase.google.com/docs/firestore/quickstart?hl=es
 import { getFirestore, collection, doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
+// Cloud Firestore Storage | https://firebase.google.com/docs/storage/web/start?hl=es
+import { getStorage, ref, getDownloadURL  } from "firebase/storage";
+import { app } from './firebase'
 
 //Inicializar base de datos
 const db = getFirestore();
+const storage = getStorage(app);
 
 document.addEventListener("DOMContentLoaded", async function () {
 
@@ -91,16 +95,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     });
 
-    function cargarCarrusel(producto) {
+    async function cargarCarrusel(producto) {
+        const arrImgURLs = await obtenerURLsEnDB(producto.imagenes);
         const carouselInner = document.querySelector("#productCarousel .carousel-inner");
-        const carouselHTML = producto.imagenes.map((imagenes, index) => `
+        const carouselHTML = arrImgURLs.map((imagenes, index) => `
              <div class="carousel-item${index === 0 ? ' active' : ''}" id="miCarousel">
                  <img class="" src="${imagenes}" alt="Imagen ${index + 1}">
              </div>
          `).join('');
 
         const miniaturasInner = document.getElementById('img-miniaturas');
-        const miniaturasHTML = producto.imagenes.map((imagen, index) => `
+        const miniaturasHTML = arrImgURLs.map((imagen, index) => `
             <div class="col-3" >
             <img src="${imagen}" class="d-block w-100 img-top thumbnail" alt="Miniatura 1"
                 data-slide-to="${index}">
@@ -193,4 +198,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             actualizarEstrellasSeleccionadas();
         });
     });
+
+    async function obtenerURLsEnDB(arrImgPath) {
+        const res = await Promise.all(arrImgPath.map(async (imgPath) => {
+            const url = await getDownloadURL(ref(storage, imgPath));
+            return url;
+        }));
+        return res;
+    }
 });

@@ -3,8 +3,6 @@ import { initializeApp } from "firebase/app";
 // Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Cloud Firestore Database | https://firebase.google.com/docs/firestore/quickstart
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
