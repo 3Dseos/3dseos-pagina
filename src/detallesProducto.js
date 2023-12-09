@@ -69,7 +69,37 @@ document.addEventListener("DOMContentLoaded", async function () {
         const año = fecha.getFullYear();
         return `${dia}/${mes}/${año}`;
     }
+        function generarEstrellasHTML(calificacion) {
+        let estrellasHTML = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= calificacion) {
+                estrellasHTML += '<span class="star checked">&#9733;</span>';
+            } else {
+                estrellasHTML += '<span class="star">&#9733;</span>';
+            }
+        }
+        return estrellasHTML;
+    }
 
+    function actualizarEstrellasSeleccionadas() {
+        stars.forEach((star, index) => {
+            if (index < calificacion) {
+                star.classList.add('checked');
+            } else {
+                star.classList.remove('checked');
+            }
+        });
+    }
+
+    stars.forEach(star => {
+        star.addEventListener('click', () => {
+            const starId = star.id.substr(4);
+            calificacion = parseInt(starId);
+            actualizarEstrellasSeleccionadas();
+        });
+    });
+
+    actualizarEstrellasSeleccionadas()
     //----------------CARRUSEL-------------------------------------
     cargarCarrusel(producto);
     //--------DETALLES DE PRODUCTO-------------------------
@@ -169,35 +199,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    function generarEstrellasHTML(calificacion) {
-        let estrellasHTML = '';
-        for (let i = 1; i <= 5; i++) {
-            if (i <= calificacion) {
-                estrellasHTML += '<span class="star checked">&#9733;</span>';
-            } else {
-                estrellasHTML += '<span class="star">&#9733;</span>';
-            }
-        }
-        return estrellasHTML;
-    }
-
-    function actualizarEstrellasSeleccionadas() {
-        stars.forEach((star, index) => {
-            if (index < calificacion) {
-                star.classList.add('checked');
-            } else {
-                star.classList.remove('checked');
-            }
-        });
-    }
-
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            const starId = star.id.substr(4);
-            calificacion = parseInt(starId);
-            actualizarEstrellasSeleccionadas();
-        });
-    });
 
     async function obtenerURLsEnDB(arrImgPath) {
         const res = await Promise.all(arrImgPath.map(async (imgPath) => {
