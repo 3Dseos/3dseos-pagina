@@ -269,6 +269,27 @@ p {
     font-size: 65px;
   }
   /* Carrousel */
+.container2 {
+  background-color: #00000088;
+  /* display: grid; */
+  gap: 1rem;
+      padding: 10px;
+  backdrop-filter: blur(50px);
+    border-radius: 30px;
+    padding: 20px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    max-width: 1500px;
+    margin: 0 auto;
+    margin-bottom: 3rem;
+}
+.carousel-inner img {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
 .container {
   background-color: #00000088;
   display: grid;
@@ -281,11 +302,6 @@ p {
     justify-items: center;
     align-items: center;
     text-align: center;
-}
-.carousel-inner img {
-  width: 100%;
-  height: auto;
-  border-radius: 30px;
 }
 /* Catalogo */
 .containerBody{
