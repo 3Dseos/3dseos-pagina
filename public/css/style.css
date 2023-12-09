@@ -6,7 +6,7 @@
   height: 3px;
   background: linear-gradient(to right, transparent, #0effdf, transparent);
   overflow: hidden;
-  z-index: 10;
+  z-index: 1000;
   margin-top: .1px;
 }
 .loader-container {
@@ -17,7 +17,7 @@
   height: 5px;
   background: linear-gradient(to right, transparent, #0effdf, transparent);
   overflow: hidden;
-  z-index: 1000; /* Asegura que el loader esté encima de otros elementos */
+  z-index: 10; /* Asegura que el loader esté encima de otros elementos */
 }
 .loader2::after {
   content: '';
@@ -28,7 +28,20 @@
   background: linear-gradient(to right, transparent, #212121, transparent);
   animation: slide 5s infinite, init 5s; /* Agregado init para la primera ejecución */
 }
-
+.filtrar{
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  background-color: #00000088;
+  /* backdrop-filter: blur(50px); */
+  padding: 30px;
+  margin-top: 30px;
+  border-radius: 30px;
+  max-width: 400px;
+  margin: 0 auto;
+}
 @keyframes slide {
   0% {
     transform: translateX(100%);
@@ -282,6 +295,7 @@ p {
   max-width: 1100px;
   background-color: #00000088;
   /* backdrop-filter: blur(50px); */
+  justify-items: center;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
   gap: 40px;
@@ -585,8 +599,8 @@ p h2{
 .contenedor-principal {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 3fr));
-  justify-items: center;
   justify-content: center;
+  justify-items: center;
   align-items: center;
   text-align: center;
   gap: 40px;
