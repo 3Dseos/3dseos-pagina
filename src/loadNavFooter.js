@@ -8,6 +8,9 @@
               let data2 = await response2.text();
               document.querySelector('.header').innerHTML = data1;
               document.querySelector('.pie-pagina').innerHTML = data2;
+              //Open y Close Nav
+              document.getElementById('nav-menu-open').addEventListener('click', openNav);
+              document.getElementById('nav-menu-close').addEventListener('click', closeNav);
           } else {
             console.error('Error al cargar el archivo', response.statusText);
           }
