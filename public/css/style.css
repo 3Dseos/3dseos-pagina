@@ -79,6 +79,22 @@
   object-fit: cover; /* Hace que la imagen cubra la totalidad del contenedor manteniendo las proporciones */
 }
 /* ----------------------------------- */
+#star1:hover,
+#star2:hover,
+#star3:hover,
+#star4:hover,
+#star5:hover{
+  color: #D4AF37}
+
+#star1:focus,
+#star2:focus,
+#star3:focus,
+#star4:focus,
+#star5:focus{
+  color: #D4AF37}
+
+.checked {
+  color: #D4AF37}
 
 .contenedor {
   display: flex;
