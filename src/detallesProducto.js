@@ -1,10 +1,8 @@
 import { app } from './firebase'
-import { getFirestore, collection, getDoc, doc } from 'firebase/firestore';
+import { getFirestore, collection, doc, getDoc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore';
 
-//Init services
+//Inicializar base de datos
 const db = getFirestore();
-const colectionName = "productos";
-
 
 document.addEventListener("DOMContentLoaded", async function () {
 
@@ -12,12 +10,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
     
-    // Realiza una solicitud HTTP para obtener los detalles del producto con el ID correspondiente desde el archivo JSON
-    //const response = await fetch("/json/productos.json");
-    //const data = await response.json();
-    const docRef = doc(db, colectionName, productId); 
-    const docSnap = await getDoc(docRef);
-    let producto = {...docSnap.data(), id: docSnap.id};
+    //Obtenemos la referencia al 'documento'
+    const productRef = doc(db, "productos", productId); 
+    
+    //Obtenemos un snapshot (foto) del documento en el momento actual
+    let productSnapshot = await getDoc(productRef);
+    let producto = {...productSnapshot.data(), id: productSnapshot.id};
 
     // Encuentra el producto correspondiente en el JSON utilizando el ID
     //producto = data.find(item => item.id === parseInt(productId, 10));
@@ -34,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const submitBtn = document.getElementById("submitBtn");
 
 
-    comentarioForm.addEventListener("submit", function (e) {
+    comentarioForm.addEventListener("submit", async function (e) {
         e.preventDefault();
         const nombre = document.getElementById("userName").value;
         const comentarios = document.getElementById("userComment").value;
@@ -46,7 +44,12 @@ document.addEventListener("DOMContentLoaded", async function () {
         };
 
         // Agrega el nuevo comentario al arreglo de comentarios del producto actual
-        producto.comentarios.push(nuevoComentario);
+        await updateDoc(productRef, {
+            comentarios: arrayUnion(nuevoComentario)
+        });
+        productSnapshot = await getDoc(productRef);
+        producto = {...productSnapshot.data(), id: productSnapshot.id};
+        
 
         // Limpia el formulario y actualiza la visualización de los comentarios
         comentarioForm.reset();
