@@ -81,7 +81,7 @@ document.getElementById("applyFiltersBtn").addEventListener("click", buscarPorNo
 
 
 //---------------------Subir JSON a la base de datos----------------------
-//Init services
+
 const jsonPath = "json/productos.json";
 
 async function leerYProcesarJson() {
@@ -96,9 +96,18 @@ async function leerYProcesarJson() {
         // }
         //-------------------
         data.forEach(p => {
-            const id = `${p.id}`;
+            
+            let id = `${p.id}`;
+            
+            //Hace que los id tengan el formato 000, para que quede ordenados por id
+            const maxLength = 3;
+            const idStringLength = maxLength - id.length;
+            for(let i = 0; i < idStringLength; i++)
+                id = '0' + id;
+            
             delete p.id; //Quita el id de dentro objeto para no subirlo a la db
-            setDoc(doc(db, 'productos-test', id), p);
+
+            setDoc(doc(db, 'productos', id), p);
         });
 
     } catch (error) {
@@ -106,10 +115,10 @@ async function leerYProcesarJson() {
     }
 }
 
-const subirJsonBtn = document.querySelector('#SubirJson');
-subirJsonBtn.addEventListener('click', leerYProcesarJson);
+//const subirJsonBtn = document.querySelector('#SubirJson');
+//subirJsonBtn.addEventListener('click', leerYProcesarJson);
 
-
+//--------Test----------------
 //getDocs(collection(db, collectionName))
 //    .then((snapshot) => {
 //        // console.log(snapshot);
