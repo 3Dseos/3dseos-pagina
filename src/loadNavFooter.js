@@ -9,14 +9,13 @@
               document.querySelector('.header').innerHTML = data1;
               document.querySelector('.pie-pagina').innerHTML = data2;
           } else {
-            console.error('Error al cargar el archivo', response1.statusText);
+            console.error('Error al cargar el archivo', response.statusText);
           }
-          document.querySelector('#nav-menu-open').addEventListener('click', openNav);
-          document.querySelector('#nav-menu-close').addEventListener('click', closeNav);
         } catch (error) {
           console.error('Error al cargar el archivo:', error);
       }
-  }
+}
+
   //funcion esconder nav
   function openNav(){
       document.getElementById("mobile-menu").style.width = "100%";
@@ -26,7 +25,6 @@
       document.getElementById("mobile-menu").style.width = "0%";
   }
   cargar()
-
 
   const swiper = new Swiper('#miCarousel', {
       // Optional parameters
