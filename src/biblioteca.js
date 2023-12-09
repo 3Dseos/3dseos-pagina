@@ -24,7 +24,7 @@ getDocs(colRef)
                         <img src="${imagen}" class="img-container" data-product="${producto.id}"   alt="${producto.nombre}">
                         <div class="description">
                         <span class="title">${producto.nombre}</span> 
-
+                            
                         </div>
                     </div>
                 </div>

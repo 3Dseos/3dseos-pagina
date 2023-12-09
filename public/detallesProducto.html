@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Producto</title>
+    <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/producto.css">
-        <link rel="icon" type="image/x-icon" href="img/logo.png">
 
       <link
       rel="stylesheet"
@@ -60,12 +59,12 @@
             <!-- Columna de Reseñas del Producto -->
             <div class="col-md-7 d-flex flex-column align-items-center" id="contenedor-reseñas">
                 <h2 class="mb-4 text-info" id="titulo-reseñas">Reseñas del Producto</h2>
-                <div class="comentariosContainer border-right-only p-3 mb-3 text-white" id="comentariosContenedor">
+                <div class="comentariosContainer p-3 text-white" id="comentariosContenedor">
                     <!-- Los comentarios se mostrarán aquí -->
                 </div>
                 <div class="pagination-container mt-3 d-flex justify-content-center" id="botones-comentario">
                     <button class="btn btn-outline-primary btn-sm mr-2 btn-comentario"
-                        id="anteriorBtn">Anterior</button>
+                        id="anteriorBtn d-wrap">Anterior</button>
                     <button class="btn btn-outline-primary btn-sm btn-comentario" id="siguienteBtn">Siguiente</button>
                 </div>
             </div>
@@ -95,13 +94,13 @@
         </div>
     </div>
 
-    <div class="container my-5">
-        <h2 class="mb-2 text-info">Productos Relacionados</h2>
+    <div class="container my-5 ">
+        <h2 class="mb-2 text-info text-center">Productos Relacionados</h2>
         <div id="relatedProductsCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner text-center">
                 <!-- Contenido del carrusel -->
                 <div class="carousel-item active">
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-md-4">
                             <div class="card bg-black text-white rounded-5 ">
                                 <img src="img/imgProducto/similares1.png" class="card-img-top" alt="Producto 1">
@@ -151,17 +150,17 @@
                         </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev " href="#relatedProductsCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden=""
-                        style="font-size: 2rem; color: black;"></span>
-                </a>
-                <a class="carousel-control-next" href="#relatedProductsCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden=""
-                        style="font-size: 2rem; color: black;"></span>
-                    </a>
                 <!-- Agrega más elementos carousel-item según sea necesario para más productos -->
             </div>
         </div>
+        <a class="carousel-control-prev" href="#relatedProductsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden=""
+                style="font-size: 2rem; color: black;"></span>
+        </a>
+        <a class="carousel-control-next " href="#relatedProductsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden=""
+                style="font-size: 2rem; color: black;"></span>
+            </a>
     </div>
     
 
@@ -181,7 +180,6 @@
 
     <!-- Firebase imports -->
     <script src="js/firebase.js"></script>
-
 </body>
 
 </html>

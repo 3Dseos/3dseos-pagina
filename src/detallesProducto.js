@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Obtiene el identificador del producto desde la URL
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
-
+    
     // Realiza una solicitud HTTP para obtener los detalles del producto con el ID correspondiente desde el archivo JSON
     //const response = await fetch("/json/productos.json");
     //const data = await response.json();
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         carouselInner.innerHTML = carouselHTML;
         miniaturasInner.innerHTML = miniaturasHTML;
     }
-
+    
     function cargarDetalles(producto) {
         const productContainer = document.getElementById("product-details");
         const productHTML =
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <ul class="text-white">
                 ${producto.caracteristicas.map(caracteristica => `<li class="list-prod">${caracteristica}</li>`).join('')}
                 </ul>
-                <button class="btn-Publicar mx-auto">
+                <button class="btn-Publicar mx-auto" id="btnDown">
                 <span>Download<span>
                 </button>
             </div>`;
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", async function () {
                 const estrellasHTML = generarEstrellasHTML(comentario.calificacion);
                 const nuevoComentario = `
                     <div class="media my-2">
-                        <img src="img/user.png" class="mr-2 img-comentario" alt="${comentario.usuario}">
+                        <img src="img/user.png" class="img-comentario" alt="${comentario.usuario}">
                         <div class="media-body text-white">
                             <h5 class="mt-0 d-flex justify-content-between align-items-center">
                                 <div class="divElementosComentarios text-white">
