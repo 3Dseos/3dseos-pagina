@@ -50,3 +50,5 @@ function materialCost(material) {
     };
     return costos[material];
 }
+
+document.getElementById('btnCalcular').addEventListener('click', calcularPrecio);
