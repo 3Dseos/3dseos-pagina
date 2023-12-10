@@ -152,6 +152,7 @@ body{
   url("../img/fondo-contacto.jpg") right/auto 100% no-repeat;
   background-position: center;
   background-size: cover;
+  background-attachment: fixed;
 }
 h3,
 h2 {
