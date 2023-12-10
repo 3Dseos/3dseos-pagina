@@ -174,12 +174,12 @@ p {
   z-index: 300;
 }
 
-.header .logo{
+.header .logo .logo2{
   cursor: pointer;
   margin-right: auto;
 }
 
-.header .logo img{
+.header .logo .logo2 img{
   height: 70px;
   width: auto;
   transition: all 0.3s;
