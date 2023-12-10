@@ -1,7 +1,7 @@
 // Cloud Firestore Database | https://firebase.google.com/docs/firestore/quickstart?hl=es
 import { getFirestore, collection, getDocs, doc, setDoc, addDoc } from 'firebase/firestore';
 // Cloud Firestore Storage | https://firebase.google.com/docs/storage/web/start?hl=es
-import { getStorage, ref, getDownloadURL  } from "firebase/storage";
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { app } from './firebase'
 
 //Init services
@@ -11,21 +11,31 @@ const storage = getStorage(app);
 let collectionName = 'productos';
 const colRef = collection(db, collectionName);
 
-// Obtiene el contenedor de productos
-const productContainer = document.getElementById("product-container");
-
 getDocs(colRef)
     .then((snapshot) => {
-        snapshot.docs.forEach(async (doc) => {
+        const productos = Promise.all(snapshot.docs.map(async (doc) => {
             const producto = { ...doc.data(), id: doc.id };
+            //console.log(producto.id);
 
-            // Obtén la primera imagen del array (puedes cambiar el índice según tus necesidades)
-            const imagen = await getDownloadURL(ref(storage, producto.imagenes[0]));
+            // Obtén la primera imagen del array
+            const imgURL = await getDownloadURL(ref(storage, producto.imagenes[0]));
+            //Actualizamos path de la imagen a la url de la base de datos
+            producto.imagen = imgURL;
+
+            return producto;
+        }));
+        return productos;
+    })
+    .then((productos) => {
+        productos.forEach(producto => {
+            console.log(producto.id);
+            // Obtiene el contenedor de productos
+            const productContainer = document.getElementById("product-container");
 
             const cardHtml = `
                 <div class="card">
                     <div class="fixed-card">
-                        <img src="${imagen}" class="img-container" data-product="${producto.id}"   alt="${producto.nombre}">
+                        <img src="${producto.imagen}" class="img-container" data-product="${producto.id}"   alt="${producto.nombre}">
                         <div class="description">
                         <span class="title">${producto.nombre}</span> 
                             
@@ -85,7 +95,7 @@ document.getElementById("applyFiltersBtn").addEventListener("click", buscarPorNo
 
 
 //---------------------Subir JSON a la base de datos----------------------
-
+/* 
 const jsonPath = "json/productos.json";
 
 async function leerYProcesarJson() {
@@ -100,15 +110,15 @@ async function leerYProcesarJson() {
         // }
         //-------------------
         data.forEach(p => {
-            
+
             let id = `${p.id}`;
-            
+
             //Hace que los id tengan el formato 000, para que quede ordenados por id
             const maxLength = 3;
             const idStringLength = maxLength - id.length;
-            for(let i = 0; i < idStringLength; i++)
+            for (let i = 0; i < idStringLength; i++)
                 id = '0' + id;
-            
+
             delete p.id; //Quita el id de dentro objeto para no subirlo a la db
 
             setDoc(doc(db, 'productos', id), p);
@@ -118,6 +128,7 @@ async function leerYProcesarJson() {
         console.log(`Se produjo un error: ${error}`);
     }
 }
+*/
 
 //const subirJsonBtn = document.querySelector('#SubirJson');
 //subirJsonBtn.addEventListener('click', leerYProcesarJson);
