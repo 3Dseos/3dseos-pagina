@@ -17,6 +17,7 @@
 // }
 // cargar();
 
+
 function calcularPrecio() {
     var cantidad = document.getElementById("cantidad").value;
     var costo = document.getElementById("costo").value;
